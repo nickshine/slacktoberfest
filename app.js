@@ -1,5 +1,6 @@
 require('dotenv').config();
 const {App} = require('@slack/bolt');
+const fetch = require('node-fetch');
 
 
 const app = new App({
@@ -17,26 +18,20 @@ const app = new App({
 })();
 
 app.event('app_mention', async ({event, context, client, say}) => {
+  console.log(event);
+  mention = event.text.split(' ');
+  if (mention.length != 2) {
+    return;
+  }
+  username = mention[1];
+  console.log(username);
+  res = await fetch(`https://hacktoberfestchecker.jenko.me/prs?username=${username}`); // TODO: replace with built-in checks
+  json = await res.json();
+
+  console.log(json.prs.length);
+
   try {
-    await say({'blocks': [
-      {
-        'type': 'section',
-        'text': {
-          'type': 'mrkdwn',
-          'text': `Mention response test for <@${event.user}>.  Button:`,
-        },
-        'accessory': {
-          'type': 'button',
-          'text': {
-            'type': 'plain_text',
-            'text': 'Button',
-            'emoji': true,
-          },
-          'value': 'test_click_123',
-          'action_id': 'first_button',
-        },
-      },
-    ]});
+    await say(`PR count for GitHub user ${username}: ${json.prs.length}`);
   } catch (error) {
     console.error(error);
   }
