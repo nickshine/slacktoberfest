@@ -1,0 +1,29 @@
+{
+  "name": "slacktoberfest",
+  "version": "1.0.0",
+  "description": "A Slack app to display your Hacktoberfest contribution status",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickshine/slacktoberfest.git"
+  },
+  "keywords": [
+    "node",
+    "slack",
+    "hacktoberfest"
+  ],
+  "author": "Nicholas Shine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickshine/slacktoberfest/issues"
+  },
+  "homepage": "https://github.com/nickshine/slacktoberfest#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.7.0",
+    "dotenv": "^10.0.0"
+  }
+}
