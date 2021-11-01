@@ -4,6 +4,12 @@
 
 [hacktoberfest]:https://hacktoberfest.digitalocean.com/
 
+## Usage
+
+```bash
+/slacktoberfest <github username>
+```
+
 ## Development
 
 ```bash
